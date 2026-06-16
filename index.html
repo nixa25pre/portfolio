@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nixan — Senior C++ Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Nixan S — Senior C++ Developer specializing in telecom systems." />
+  <meta name="author" content="Nixan S" />
+  <meta property="og:title" content="Nixan — Senior C++ Developer Portfolio" />
+  <meta property="og:description" content="Portfolio of Nixan S — Senior C++ Developer specializing in telecom systems." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <script>
+    (function(){try{var t=localStorage.getItem('nixan-theme');var d=t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();
+  </script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="#home" class="nav__logo">Nixan</a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav__actions">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="admin.html" class="btn-ghost hide-sm">Admin</a>
+        <button id="menuToggle" class="icon-btn show-sm" aria-label="Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero__bg-orb hero__bg-orb--1"></div>
+    <div class="hero__bg-orb hero__bg-orb--2"></div>
+    <div class="container hero__grid">
+      <div class="hero__content fade-up">
+        <p class="kicker">Hello, I'm</p>
+        <h1 class="hero__name">Nixan S</h1>
+        <h2 class="hero__title text-gradient">Senior C++ Developer</h2>
+        <p class="hero__desc">
+          Telecom domain specialist building high-performance backend systems
+          in C, C++, Pro*C, and Oracle on Linux.
+        </p>
+        <div class="hero__cta">
+          <button id="downloadResumeBtn" class="btn btn-primary">
+            <i class="fa-solid fa-download"></i> Download Resume
+          </button>
+          <a href="#contact" class="btn btn-outline">
+            <i class="fa-regular fa-envelope"></i> Contact Me
+          </a>
+        </div>
+      </div>
+      <div class="hero__avatar fade-in">
+        <div class="avatar-ring">
+          <div class="avatar-inner text-gradient">NS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section__title">
+        <p class="kicker">About</p>
+        <h2>A bit about me</h2>
+        <span class="title-bar"></span>
+      </div>
+      <div class="about__grid">
+        <p class="about__text">
+          I'm a Senior C++ Developer with deep experience in the telecom
+          domain. I design and maintain high-throughput systems that handle
+          mission-critical workloads — from real-time charging to large-scale
+          data pipelines — using C, C++, Pro*C, and Oracle on Linux.
+        </p>
+        <div class="stats">
+          <div class="stat-card"><div class="stat-card__v text-gradient" data-count="3">0</div><div class="stat-card__l">Years Experience</div></div>
+          <div class="stat-card"><div class="stat-card__v text-gradient" data-count="10">0</div><div class="stat-card__l">Projects</div></div>
+          <div class="stat-card"><div class="stat-card__v text-gradient" data-count="5">0</div><div class="stat-card__l">Technologies</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section section--muted">
+    <div class="container">
+      <div class="section__title">
+        <p class="kicker">Skills</p>
+        <h2>What I work with</h2>
+        <span class="title-bar"></span>
+      </div>
+      <div class="skills__grid" id="skillsGrid">
+        <!-- skills injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="container container--narrow">
+      <div class="section__title">
+        <p class="kicker">Experience</p>
+        <h2>Career timeline</h2>
+        <span class="title-bar"></span>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section section--muted">
+    <div class="container">
+      <div class="section__title">
+        <p class="kicker">Education</p>
+        <h2>Academic background</h2>
+        <span class="title-bar"></span>
+      </div>
+      <div class="edu__grid" id="eduGrid"></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section__title">
+        <p class="kicker">Projects</p>
+        <h2>Selected work</h2>
+        <span class="title-bar"></span>
+      </div>
+      <div class="projects__grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- RESUME CTA -->
+  <section class="section section--muted resume-cta">
+    <div class="container container--narrow text-center">
+      <h2>Want the full story?</h2>
+      <p class="muted">Download my latest resume.</p>
+      <button id="downloadResumeBtn2" class="btn btn-primary">
+        <i class="fa-solid fa-file-arrow-down"></i> Download Resume
+      </button>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container container--narrow">
+      <div class="section__title">
+        <p class="kicker">Contact</p>
+        <h2>Let's talk</h2>
+        <span class="title-bar"></span>
+      </div>
+      <form id="contactForm" class="form-card" novalidate>
+        <div class="form-row">
+          <label>
+            <span class="form-label">Name <em>*</em></span>
+            <input name="Name" maxlength="100" required />
+          </label>
+          <label>
+            <span class="form-label">Email <em>*</em></span>
+            <input name="Email" type="email" maxlength="200" required />
+          </label>
+        </div>
+        <label>
+          <span class="form-label">Subject</span>
+          <input name="Subject" maxlength="150" />
+        </label>
+        <label>
+          <span class="form-label">Message <em>*</em></span>
+          <textarea name="Message" rows="5" maxlength="2000" required></textarea>
+        </label>
+        <p class="form-error" id="contactErr"></p>
+        <p class="form-ok" id="contactOk"></p>
+        <button class="btn btn-primary btn-block" type="submit" id="contactSubmit">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container text-center">
+      © <span id="year"></span> Nixan S. Built with care.
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

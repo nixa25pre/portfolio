@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Admin — Nixan Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>
+    (function(){try{var t=localStorage.getItem('nixan-theme');var d=t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();
+  </script>
+</head>
+<body>
+  <!-- LOGIN SCREEN -->
+  <div id="loginView" class="login-wrap">
+    <form id="loginForm" class="login-card">
+      <div class="login-head">
+        <h1 class="text-gradient">Admin Login</h1>
+        <p class="muted">Nixan Portfolio</p>
+      </div>
+      <p id="backendWarn" class="form-error hidden">Backend not configured. Edit <code>js/api.js</code> and set <code>APPS_SCRIPT_URL</code>.</p>
+      <label>
+        <span class="form-label">Username</span>
+        <input name="username" required autofocus />
+      </label>
+      <label>
+        <span class="form-label">Password</span>
+        <input name="password" type="password" required />
+      </label>
+      <p class="form-error" id="loginErr"></p>
+      <button class="btn btn-primary btn-block" type="submit" id="loginSubmit">Sign in</button>
+      <a href="index.html" class="login-back muted">← Back to portfolio</a>
+    </form>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboardView" class="hidden">
+    <header class="adm-header">
+      <div class="container adm-header__inner">
+        <h1 class="text-gradient">Nixan · Admin</h1>
+        <div class="nav__actions">
+          <a href="index.html" class="btn-ghost">View site</a>
+          <button id="logoutBtn" class="btn-ghost">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="container adm-body">
+      <div class="tabs" id="tabs"></div>
+      <div id="tabPanel"></div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal hidden" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__panel">
+      <div class="modal__head">
+        <h3 id="modalTitle">Edit</h3>
+        <button class="icon-btn" data-close aria-label="Close">✕</button>
+      </div>
+      <div class="modal__body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
