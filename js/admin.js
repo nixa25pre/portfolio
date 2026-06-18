@@ -4,6 +4,12 @@
 (function () {
   "use strict";
 
+  window.addEventListener("pageshow", function (event) {
+  if (event.persisted) {
+    window.location.reload();
+  }
+  });
+
   const SHEETS = [
     { key: "skills",     label: "Skills",     fields: ["Skill", "Category", "Percentage"] },
     { key: "experience", label: "Experience", fields: ["Company", "Role", "Start Date", "End Date", "Description", "Technology"] },
@@ -23,6 +29,8 @@
   const modalTitle    = document.getElementById("modalTitle");
   const modalBody     = document.getElementById("modalBody");
 
+  let currentTab = "skills";
+
   // ----- helpers -----
   function escapeHtml(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g,
@@ -39,7 +47,12 @@
 
   // ----- init -----
   if (!window.api.isConfigured()) backendWarn.classList.remove("hidden");
-  if (window.auth.isLoggedIn()) showDashboard(); else showLogin();
+  if (window.auth.isLoggedIn()) {
+    showDashboard();
+  } else {
+    window.auth.clear();
+    showLogin();
+  }
 
   function showLogin() { loginView.classList.remove("hidden"); dashboardView.classList.add("hidden"); }
   function showDashboard() { loginView.classList.add("hidden"); dashboardView.classList.remove("hidden"); renderTabs(); selectTab("skills"); }
@@ -61,7 +74,6 @@
   });
 
   // ----- tabs -----
-  let currentTab = "skills";
   function renderTabs() {
     const items = SHEETS.map((s) => `<button class="tab" data-key="${s.key}">${s.label}</button>`).join("");
     tabs.innerHTML = items + `<button class="tab" data-key="contact">Messages</button>`;
