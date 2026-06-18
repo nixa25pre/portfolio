@@ -2,7 +2,7 @@
 // Nixan Portfolio — API client
 // Configure your deployed Google Apps Script Web App URL below.
 // ============================================================
-window.APPS_SCRIPT_URL = ""; // <-- paste your Apps Script /exec URL here
+window.APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx6U7EQmaY71J28Ny1HYt8wetM9NYDlKTsnKSRbVL7mJiISDKisRDFf92N9OV69BvhD/exec"; // <-- paste your Apps Script /exec URL here
 
 window.api = (function () {
   const URL_ = () => window.APPS_SCRIPT_URL;
@@ -42,8 +42,37 @@ window.api = (function () {
 
 window.auth = {
   KEY: "nixan-admin-token",
-  get()        { return localStorage.getItem(this.KEY); },
-  set(token)   { localStorage.setItem(this.KEY, token); },
-  clear()      { localStorage.removeItem(this.KEY); },
-  isLoggedIn() { return !!localStorage.getItem(this.KEY); },
+  TIME_KEY: "nixan-admin-login-time",
+
+  get() {
+    return localStorage.getItem(this.KEY);
+  },
+
+  set(token) {
+    localStorage.setItem(this.KEY, token);
+    localStorage.setItem(this.TIME_KEY, Date.now());
+  },
+
+  clear() {
+    localStorage.removeItem(this.KEY);
+    localStorage.removeItem(this.TIME_KEY);
+  },
+
+  isLoggedIn() {
+    const token = localStorage.getItem(this.KEY);
+    const loginTime = localStorage.getItem(this.TIME_KEY);
+
+    if (!token || !loginTime) {
+      return false;
+    }
+
+    const SESSION_TIMEOUT = 15 * 60 * 1000; // 15 minutes
+
+    if (Date.now() - Number(loginTime) > SESSION_TIMEOUT) {
+      this.clear();
+      return false;
+    }
+
+    return true;
+  }
 };
